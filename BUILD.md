@@ -45,6 +45,9 @@ The configure script has many options (to see them all, run
   * `--enable-debug`
     Enable debug checks in the re2c source code. Also enables debug options.
 
+  * `--enable-csharp`
+    Build re2csharp (identical to `re2c --lang csharp`). This is on by default.
+
   * `--enable-golang`
     Build re2go (identical to `re2c --lang go`). This is on by default.
 

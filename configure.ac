@@ -67,6 +67,9 @@ AM_COND_IF([WITH_LIBS], [
     AC_LANG_POP([C++])
 ])
 
+# --enable-csharp
+AC_ARG_ENABLE([csharp], [AS_HELP_STRING([--enable-csharp], [build csharp executable])])
+AM_CONDITIONAL([WITH_CSHARP], [test "x$enable_csharp" != "xno"])
 
 # --enable-golang
 AC_ARG_ENABLE([golang], [AS_HELP_STRING([--enable-golang], [build re2go executable])])

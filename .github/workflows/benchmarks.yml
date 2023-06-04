@@ -71,6 +71,7 @@ jobs:
           cmake -S . -B .build \
             -G "Unix Makefiles" \
             -DRE2C_BUILD_LIBS=ON \
+            -DRE2C_BUILD_RE2CSHARP=OFF \
             -DRE2C_BUILD_RE2GO=OFF \
             -DRE2C_BUILD_RE2RUST=OFF \
             -DRE2C_BUILD_BENCHMARKS=ON \

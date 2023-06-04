@@ -478,6 +478,14 @@ lib_LTLIBRARIES =
 include $(top_srcdir)/Makefile.lib.am
 endif
 
+# re2csharp
+if WITH_GOLANG
+bin_PROGRAMS += re2csharp
+re2csharp_CXXFLAGS = $(AM_CXXFLAGS) -DRE2C_LANG=Lang::CSHARP
+re2csharp_SOURCES = $(re2c_SOURCES)
+nodist_re2csharp_SOURCES = $(nodist_re2c_SOURCES)
+endif
+
 # re2go
 if WITH_GOLANG
 bin_PROGRAMS += re2go

@@ -26,6 +26,7 @@ option(RE2C_REBUILD_DOCS "Regenerate manpage" OFF)
 option(RE2C_BUILD_LIBS "Build libraries" OFF)
 
 
+option(RE2C_BUILD_RE2CSHARP "Build re2csharp executable (an alias for `re2c --lang csharp`)" ON)
 option(RE2C_BUILD_RE2GO "Build re2go executable (an alias for `re2c --lang go`)" ON)
 option(RE2C_BUILD_RE2RUST "Build re2rust executable (an alias for `re2c --lang rust`)" ON)
 
@@ -189,6 +190,12 @@ set(re2c_sources
 
 # re2c
 add_executable(re2c ${re2c_sources})
+
+# re2csharp
+if (RE2C_BUILD_RE2CSHARP)
+    add_executable(re2csharp ${re2c_sources})
+    target_compile_definitions(re2csharp PUBLIC "RE2C_LANG=Lang::CSHARP")
+endif()
 
 # re2go
 if (RE2C_BUILD_RE2GO)

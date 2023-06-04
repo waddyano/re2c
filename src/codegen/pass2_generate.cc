@@ -1451,6 +1451,18 @@ static void gen_cond_enum(Scratchbuf& buf,
                 }
                 append(block, code_text(alc, buf.flush()));
             }
+        } else if (opts->lang == Lang::CSHARP) {
+            start = buf.cstr("enum ").str(opts->api_cond_type).cstr(" {").flush();
+            end = "}";
+            for (const StartCond& cond : conds) {
+                buf.str(cond.name);
+                if (opts->loop_switch) {
+                    buf.cstr(" = ").u32(cond.number);
+                } else if (&cond == first_cond) {
+                    buf.cstr(",");
+                }
+                append(block, code_text(alc, buf.flush()));
+            }
         } else if (opts->lang == Lang::GO) {
             start = buf.cstr("const (").flush();
             end = ")";
@@ -1744,6 +1756,9 @@ LOCAL_NODISCARD(Ret gen_yymax(Output&  output, Code* code)) {
         switch (opts->lang) {
         case Lang::C:
             code->text = buf.cstr("#define ").cstr(varname).cstr(" ").u64(max).flush();
+            break;
+        case Lang::CSHARP:
+            code->text = buf.cstr("uint ").cstr(varname).cstr(" = ").u64(max).flush();
             break;
         case Lang::GO:
             code->text = buf.cstr("var ").cstr(varname).cstr(" int = ").u64(max).flush();

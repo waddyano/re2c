@@ -217,10 +217,11 @@ opt_long: /*!local:re2c
 */
 
 opt_lang: /*!local:re2c
-    * { ERRARG("--lang", "c | go | rust", *argv); }
-    "c"    end { globopts.lang = Lang::C;    goto opt; }
-    "go"   end { globopts.lang = Lang::GO;   goto opt; }
-    "rust" end { globopts.lang = Lang::RUST; goto opt; }
+    * { ERRARG("--lang", "c | csharp | go | rust", *argv); }
+    "c"         end { globopts.lang = Lang::C;    goto opt; }
+    "csharp"    end { globopts.lang = Lang::CSHARP;    goto opt; }
+    "go"        end { globopts.lang = Lang::GO;   goto opt; }
+    "rust"      end { globopts.lang = Lang::RUST; goto opt; }
 */
 
 opt_output: /*!local:re2c
