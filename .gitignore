@@ -29,3 +29,5 @@ install-sh
 ltmain.sh
 missing
 test-driver
+.vs
+.vscode
